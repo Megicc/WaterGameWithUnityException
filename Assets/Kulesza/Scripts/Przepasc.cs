@@ -7,6 +7,7 @@ public class Przepasc : MonoBehaviour
     public GameObject przycisk;
     private SpriteRenderer button;
     public bool otwarte;
+    public GameObject interakcja;
 
     public float time;
 
@@ -26,7 +27,9 @@ public class Przepasc : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
-      if (Input.GetKeyDown(KeyCode.F) && otwarte == true)
+        interakcja.SetActive(true);
+
+        if (Input.GetKeyDown(KeyCode.F) && otwarte == true)
       {
         foreach(GameObject dziury in przepasc)
             {
@@ -38,6 +41,12 @@ public class Przepasc : MonoBehaviour
             przycisk.transform.Translate(Vector2.up * 0.5f, Space.World);
             StartCoroutine("Otworz");
       }
+
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        interakcja.SetActive(false);
 
     }
 

@@ -6,14 +6,16 @@ public class Spikes : MonoBehaviour
 {
     public GameObject przycisk;
     public GameObject[] spike;
+    public GameObject interakcja;
 
     public float time;
     public bool schowane;
-
+    
     private SpriteRenderer button;
 
     private void Start()
     {
+        
         spike = GameObject.FindGameObjectsWithTag("Spike");
         button = GetComponent<SpriteRenderer>();
     }
@@ -21,6 +23,9 @@ public class Spikes : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        interakcja.SetActive(true);
+            
+
         if (Input.GetKeyDown(KeyCode.F) && schowane == true)
         {           
             //spike.SetActive(false);
@@ -33,6 +38,12 @@ public class Spikes : MonoBehaviour
             przycisk.transform.Translate(Vector2.up * 0.5f, Space.World);
             StartCoroutine("Schowaj");
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+            interakcja.SetActive(false);
+        
     }
 
     IEnumerator Schowaj()

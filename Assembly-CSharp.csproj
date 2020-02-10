@@ -65,6 +65,9 @@
   <ItemGroup>
     <Compile Include="Assets\Kulesza\Scripts\BlurController.cs" />
     <Compile Include="Assets\Kulesza\Scripts\DestroyWater.cs" />
+    <Compile Include="Assets\Kulesza\Scripts\Instukcja.cs" />
+    <Compile Include="Assets\Kulesza\Scripts\Kamera.cs" />
+    <Compile Include="Assets\Kulesza\Scripts\Koniec.cs" />
     <Compile Include="Assets\Kulesza\Scripts\PlayerConroller.cs" />
     <Compile Include="Assets\Kulesza\Scripts\Przepasc.cs" />
     <Compile Include="Assets\Kulesza\Scripts\Spikes.cs" />

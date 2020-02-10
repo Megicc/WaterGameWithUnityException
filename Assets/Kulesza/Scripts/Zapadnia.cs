@@ -6,6 +6,7 @@ public class Zapadnia : MonoBehaviour
 {
     public GameObject[] zapadnia;
     public float time;
+    public GameObject interakcja;
 
     public bool otwarte;
     private void Start()
@@ -16,9 +17,11 @@ public class Zapadnia : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        interakcja.SetActive(true);
+
         if (Input.GetKeyDown(KeyCode.F) && otwarte == true)
         {
-
+            
             foreach(GameObject wlaz in zapadnia)
             {
                 wlaz.SetActive(false);
@@ -26,6 +29,12 @@ public class Zapadnia : MonoBehaviour
                 StartCoroutine("Przymknij");
             }            
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        interakcja.SetActive(false);
+
     }
 
     IEnumerator Przymknij()
