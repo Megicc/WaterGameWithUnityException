@@ -2484,6 +2484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravChange: -1
+  rigid: {fileID: 0}
 --- !u!1001 &1016801739
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4646,6 +4647,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: -10}
   smoothTime: 0.5
   destroy: 0.5
+  gravChange: -1
 --- !u!81 &1584290839
 AudioListener:
   m_ObjectHideFlags: 0

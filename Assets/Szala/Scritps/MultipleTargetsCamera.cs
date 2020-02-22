@@ -11,8 +11,9 @@ public class MultipleTargetsCamera : MonoBehaviour
     private Vector3 velocity;
     public float smoothTime = 0.5f;
     public float destroy = 20f;
+    public int gravChange = -1;
     //public Camera mainCamera;
-    
+
 
     private void Start()
     {
@@ -31,12 +32,12 @@ public class MultipleTargetsCamera : MonoBehaviour
         {
             waterParticle = targets[i];
 
-            //if (waterParticle.GetComponent<Transform>().position.y < -destroy)
-            //{
-            //    waterIndex = i;
-            //    toDelete = true;
-            //    break;
-            //}
+            if (waterParticle.GetComponent<Transform>().position.y < -destroy)
+            {
+                waterIndex = i;
+                toDelete = true;
+                break;
+            }
 
         }
 
@@ -44,6 +45,32 @@ public class MultipleTargetsCamera : MonoBehaviour
         {
             targets.RemoveAt(waterIndex);
             toDelete = false;
+        }
+
+
+        if (Input.GetKey(KeyCode.G))
+        {
+            if (gravChange < 0)
+            {
+                setGravity();
+            }
+            else;
+            {
+                gravChange = -gravChange;
+                setGravity();
+            }
+
+        } else if (Input.GetKey(KeyCode.H))
+        {
+            if (gravChange < 0)
+            {
+                gravChange = -gravChange;
+                setGravity();
+            }
+            else
+            {
+                setGravity();
+            }
         }
 
     }
@@ -80,5 +107,15 @@ public class MultipleTargetsCamera : MonoBehaviour
             bounds.Encapsulate(targets[i].position);
         }
         return bounds.center;
+    }
+
+    private void setGravity()
+    {
+
+        for (int i = 0; i < targets.Count; i++)
+        {
+            targets[i].GetComponent<Rigidbody2D>().gravityScale = gravChange;
+
+        }
     }
 }
