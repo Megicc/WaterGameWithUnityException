@@ -12,6 +12,7 @@ public class MultipleTargetsCamera : MonoBehaviour
     public float smoothTime = 0.5f;
     public float destroy = 20f;
     public int gravChange = -1;
+    public GameObject mainCamera;
     //public Camera mainCamera;
 
 
@@ -32,7 +33,7 @@ public class MultipleTargetsCamera : MonoBehaviour
         {
             waterParticle = targets[i];
 
-            if (waterParticle.GetComponent<Transform>().position.y < -destroy)
+            if (waterParticle.GetComponent<Transform>().position.y + 20  < mainCamera.GetComponent<Transform>().position.y )
             {
                 waterIndex = i;
                 toDelete = true;
