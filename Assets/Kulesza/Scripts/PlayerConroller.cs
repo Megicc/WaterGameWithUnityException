@@ -14,9 +14,6 @@ public class PlayerConroller : MonoBehaviour
     public float checkRadius;
     public LayerMask whatIsGrounded;
 
-    
-    private bool facingRight = true;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +29,6 @@ public class PlayerConroller : MonoBehaviour
         {
             return;
         }
-
     }
 
     void FixedUpdate()
@@ -42,23 +38,5 @@ public class PlayerConroller : MonoBehaviour
 
         moveInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
-
-        if(facingRight == false && moveInput > 0)
-        {
-            Flip();
-        }
-        else if(facingRight == true && moveInput < 0)
-        {
-            Flip();
-        }
     }
-
-    void Flip()
-    {
-        facingRight = !facingRight;
-        Vector3 Scaler = transform.localScale;
-        Scaler.x *= -1;
-        transform.localScale = Scaler;
-    }
-
 }

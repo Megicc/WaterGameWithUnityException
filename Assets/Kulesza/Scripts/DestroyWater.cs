@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class DestroyWater : MonoBehaviour
 {
-    public Transform water;
 
-    public bool czyZniszczony = false;
+    public GameObject water;
 
-    public void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerEnter2D(Collider2D col)
     {
         if(col.tag == "Spike" || col.tag == "Down")
         {
-
-
-            czyZniszczony = true;
+            Destroy(water);
         }
     }
 
